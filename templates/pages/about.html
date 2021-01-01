@@ -1,0 +1,144 @@
+{% extends 'base.html'%} {% load staticfiles %} {%block content%}
+
+<section id="showcase-inner">
+    <div class="overservices">
+<div class="container">
+
+        <h2 class="white-text center">About Cannoy Hotel</h2>
+        <p class="flow-text center white-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, inventore.
+            Sint nostrum unde recusandae doloremque.</p>
+
+</div>
+    </div>
+</section>
+
+<!-- breadcrumb -->
+
+<div class="container">
+
+    <nav class="bread grey lighten-2">
+        <div class="container">
+            <div class="nav-wrapper ">
+                <div class="col s12">
+                    <a href="{% url 'front'%}" class="breadcrumb black-text"><i class="material-icons">home </i> Home</a>
+                    <a href="#!" class="breadcrumb black-text active">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<!-- about -->
+
+<section id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m8">
+                <h4>We Search For The Perfect Home </h4>
+                <p class="flow-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, incidunt!
+                </p>
+                <img src="{% static 'img/about.jpg' %}" class="responsive-img">
+
+                <p class="flow-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, possimus dolores culpa deserunt id sit hic perspiciatis.
+                    Neque vel repellendus dolore cumque quas. Sunt, neque.
+                </p>
+
+
+
+
+            </div>
+
+            <div class="col s12 m3 offset-m1">
+
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{seller_of_month.photo.url}}" class="responsive-img">
+                    </div>
+
+                    <div class="card-content">
+                        <span class="card-title">
+                            Seller Of The Month
+                        </span>
+                        <p class="flow-text sec-text">
+                            {{seller_of_month.name}}
+                        </p>
+                        <p>
+                           {{seller_of_month.description}}
+                        </p>
+                    </div>
+                </div>
+</section>
+<section id="work" class="blue-grey darken-4">
+    <div class="container center white-text">
+            <h2 class="center">
+                We Work For You
+            </h2>
+            <p class=" flow-text center">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iusto officia a optio. Error, dicta sequi.</p>
+            
+            <a href="listings.html" class="btn center">View Our featured Listings</a>
+     </div>
+</section>
+
+<!-- our team -->
+
+<section class="team">
+   <div class="container">
+       <h3 class="center">
+           Our Team
+       </h3>
+
+       <div class="row">
+           {% for realtor in realtors%}
+           <div class="col s12 m4 center">
+                <img src="{{realtor.photo.url}}" class="circle responsive-img">
+                <h4>{{realtors.name}}</h4>
+                <p class="sec-text">Realtor</p>
+                <hr>
+                <p class="flow-text"><i class="material-icons">phone</i> {{realtor.phone}}</p>
+                <p class="flow-text"><i class="material-icons">email</i> {{realtor.email}}</p>
+
+           </div>
+           {% endfor %}
+
+          
+       </div>
+   </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+            <img src="{% static 'img/real1.jpeg' %}" class="responsive-img">
+            <h4>Seller Of The Month</h4> -->
+
+<!-- realtor name -->
+
+<!-- <p class="flow-text sec-text">Jenny Jhonson</p>
+
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
+                eum hic delectus omnis asperiores minima quis earum saepe at minus?
+
+            </p>
+                 -->
+
+</div>
+</div>
+</div>
+
+
+{%endblock%}

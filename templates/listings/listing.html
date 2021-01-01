@@ -1,0 +1,243 @@
+{% extends 'base.html'%} {% load staticfiles %} {% block content %}
+
+
+
+<section id="showcase-inner">
+    <div class="overservices">
+        <div class="container">
+
+
+            <h2 class="white-text center">{{listings.title}}</h2>
+            <p class="flow-text center white-text">{{ listings.city }} {{ listings.state }}, {{ listings.zipcode }}</p>
+
+        </div>
+    </div>
+</section>
+
+<!-- breadcrumb -->
+
+<div class="container">
+
+    <nav class="bread grey lighten-2">
+        <div class="container">
+            <div class="nav-wrapper ">
+                <div class="col s12">
+                    <a href="{% url 'index'%}" class="breadcrumb black-text"><i class="material-icons">home </i> Home</a>
+                    <a href="{% url 'listings'%}" class="breadcrumb black-text ">Browse Listings</a>
+                    <a href="#" class="breadcrumb black-text active">{{listings.title}}</a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<section class="listings">
+    <div class="container ">
+
+
+
+
+        <div class="row">
+            <div class="col s12 m8">
+                <img src="{{listings.photo_main.url}}" class="materialboxed imagess">
+
+                <div class="row">
+                    <div class="col s4 m2">
+                        <img src="{{listings.photo_1.url}}" class="materialboxed smallimagess ">
+
+                    </div>
+
+                    <div class="col s4 m2">
+                        <img src="{{listings.photo_2.url}}" class="materialboxed smallimagess">
+
+                    </div>
+
+                    <div class="col s4 m2">
+                        <img src="{{listings.photo_3.url}}" class="materialboxed smallimagess">
+
+                    </div>
+
+                    <div class="col s4 m2">
+                        <img src="{{listings.photo_4.url}}" class="materialboxed smallimagess">
+
+                    </div>
+
+                    <div class="col s4 m2">
+                        <img src="{{listings.photo_5.url}}" class="materialboxed smallimagess">
+
+                    </div>
+
+                    <div class="col s4 m2">
+                        <img src="{{listings.photo_6.url}}" class="materialboxed smallimagess ">
+
+                    </div>
+                </div>
+
+                <!-- details -->
+
+                <div class="row">
+
+                    <div class="col s12 m6">
+                        <ul class="collection">
+
+                            <li class="collection-item"><span class="sec-text h4">Asking Price </span>
+                                <span class="right sec-text">{{listings.price}}</span>
+                            </li>
+
+                            <li class="collection-item"><span class="sec-text h4">Bedrooms </span>
+                                <span class="right sec-text">{{listings.bedrooms}}</span>
+                            </li>
+
+                            <li class="collection-item"><span class="sec-text h4">Bathrooms</span>
+                                <span class="right sec-text">{{listings.bathrooms}}</span>
+                            </li>
+
+                            <li class="collection-item"><span class="sec-text h4">Garage </span>
+                                <span class="right sec-text">{{listings.garage}}</span>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="col s12 m6">
+                        <ul class="collection">
+
+                            <li class="collection-item"><span class="sec-text ">Square Feet: </span>
+                                <span class="right sec-text">{{listings.sqft}}</span>
+                            </li>
+
+                            <li class="collection-item"><span class="sec-text h4">Lot Size:</span>
+                                <span class="right sec-text">{{listings.lot_size}}</span>
+                            </li>
+
+                            <li class="collection-item"><span class="sec-text h4">Listing Date: </span>
+                                <span class="right sec-text">{{listings.list_date}}</span>
+                            </li>
+
+                            <li class="collection-item"><span class="sec-text h4">Realtors</span>
+                                <span class="right sec-text">{{listings.realtors}}</span>
+                            </li>
+
+                        </ul>
+
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col s12 m12">
+                        <p class="sec-text">{{listings.description}}</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col s12 m4">
+                <div class="card medium">
+                    <div class="card-image">
+                        <img src="{{listings.realtors.photo.url}}">
+                    </div>
+
+                    <div class="card-content">
+                        <p class="flow-text">Property Realtor</p>
+                        <p class="sec-text">{{listings.realtors}}</p>
+
+                    </div>
+                    <div class="card-action">
+                        <a href="#modal1" data-target="modal1" class="btn center  modal-trigger">Make Enquiry</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <h4>Make An Enquiry</h4>
+
+
+                <form method="POST" action="{%url 'contact'%}"> {% csrf_token %}
+
+                    <div class="input-field ">
+                        <input id="property" type="text" class="validate" name="listings" value="{{listings.title}}">
+                        <label for="property"> Property</label>
+                    </div>
+
+
+                    <div class="input-field ">
+                        <input id="first_name" type="text" class="validate" name="name">
+                        <label for="first_name"> Name</label>
+                    </div>
+
+                    <div class="input-field ">
+                        <input id="email" type="email" class="validate" name="email">
+                        <label for="email">Email</label>
+                    </div>
+
+                    <div class="input-field ">
+                        <input id="Phone" type="text" class="validate" name="phone" >
+                        <label for="Phone"> Phone</label>
+                    </div>
+
+                    <div class="input-field ">
+                        <input id="message" type="text" class="validate" name="message">
+                        <label for="message"> Message</label>
+                    </div>
+
+                    <div class="input-field ">
+                        <input id="property-id" type="hidden" class="validate" value="{{listings.id}}" name="listings_id">
+                        <label for="property-id"> </label>
+                    </div>
+
+                    <div class="input-field ">
+                        <input id="user-id" type="hidden" class="validate" value="{{user.id}}" name="user_id">
+                        <label for="user-id"> </label>
+                    </div>
+
+                   
+                        <input type="submit"  class="modal-close btn waves-effect waves-green btn-flat"></a>
+                   
+
+                </form>
+
+
+                
+            </div>
+        </div>
+</section>
+
+
+{% endblock %}
+                
+
+
+
+
+
+
+
+
+                    
+
+
+
+                    
+                   
+
+                        
+                        
+                     
